@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_ui_script">
+    <sys_ui_script action="DELETE">
+        <active>true</active>
+        <description/>
+        <global>false</global>
+        <ignore_in_now_experience>false</ignore_in_now_experience>
+        <name>x_58872_needit.recent_incidents_for_user</name>
+        <script><![CDATA[
+var RecentIncidentsUI = Class.create();
+RecentIncidentsUI.prototype = {
+  initialize: function () {},
+
+  init: function () {
+    var self = this;
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', function () { self.refresh(); });
+    } else {
+      self.refresh();
+    }
+  },
+
+  refresh: function () {
+    this._setStatus('Loading…');
+
+    var self = this;
+    var ga = new GlideAjax('IncidentsForUser');
+    ga.addParam('sysparm_name', 'getRecentIncidents');
+    ga.getXMLAnswer(function (answer) {
+      try {
+        var items = JSON.parse(answer || '[]');
+        self._renderRows(items);
+        self._setStatus('Loaded ' + items.length + ' record(s).');
+      } catch (e) {
+        self._renderRows([]);
+        self._setStatus('Error loading incidents.');
+      }
+    });
+  },
+
+  _setStatus: function (msg) {
+    var el = document.getElementById('inc_status');
+    if (el) el.textContent = msg;
+  },
+
+  _escapeHtml: function (str) {
+    return (str || '').toString()
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;');
+  },
+
+  _renderRows: function (items) {
+    var tbody = document.getElementById('inc_tbody');
+    if (!tbody) return;
+
+    tbody.innerHTML = '';
+
+    if (!items || items.length === 0) {
+      tbody.innerHTML =
+        '<tr><td colspan="4" style="padding:10px; color:#75787B;">No incidents found.</td></tr>';
+      return;
+    }
+
+    var html = '';
+    for (var i = 0; i < items.length; i++) {
+      var it = items[i];
+      html +=
+        '<tr>' +
+          '<td style="padding:10px; border-bottom:1px solid #EEE;">' + this._escapeHtml(it.number) + '</td>' +
+          '<td style="padding:10px; border-bottom:1px solid #EEE;">' + this._escapeHtml(it.short_description) + '</td>' +
+          '<td style="padding:10px; border-bottom:1px solid #EEE;">' + this._escapeHtml(it.state) + '</td>' +
+          '<td style="padding:10px; border-bottom:1px solid #EEE;">' + this._escapeHtml(it.sys_updated_on) + '</td>' +
+        '</tr>';
+    }
+
+    tbody.innerHTML = html;
+  },
+
+  type: 'RecentIncidentsUI'
+};
+]]></script>
+        <script_name>recent_incidents_for_user.js</script_name>
+        <sys_class_name>sys_ui_script</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-01-14 05:34:22</sys_created_on>
+        <sys_id>0f664cf7c31ab210c16f7f65e4013122</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>x_58872_needit.recent_incidents_for_user</sys_name>
+        <sys_package display_value="NeedIt" source="x_58872_needit">6ead8e780f603200cd674f8ce1050ed1</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="NeedIt">6ead8e780f603200cd674f8ce1050ed1</sys_scope>
+        <sys_update_name>sys_ui_script_0f664cf7c31ab210c16f7f65e4013122</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-01-14 05:34:22</sys_updated_on>
+        <ui_type>10</ui_type>
+        <use_scoped_format>false</use_scoped_format>
+    </sys_ui_script>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="NeedIt">6ead8e780f603200cd674f8ce1050ed1</application>
+        <file_path/>
+        <instance_id>b6e3a19eebb8ead0c040fddacad0cd33</instance_id>
+        <instance_name>dev324497</instance_name>
+        <name>sys_ui_script_0f664cf7c31ab210c16f7f65e4013122</name>
+        <payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update table="sys_ui_script"&gt;&lt;sys_ui_script action="INSERT_OR_UPDATE"&gt;&lt;active&gt;true&lt;/active&gt;&lt;description/&gt;&lt;global&gt;false&lt;/global&gt;&lt;ignore_in_now_experience&gt;false&lt;/ignore_in_now_experience&gt;&lt;name&gt;x_58872_needit.recent_incidents_for_user&lt;/name&gt;&lt;script&gt;&lt;![CDATA[
+var RecentIncidentsUI = Class.create();
+RecentIncidentsUI.prototype = {
+  initialize: function () {},
+
+  init: function () {
+    var self = this;
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', function () { self.refresh(); });
+    } else {
+      self.refresh();
+    }
+  },
+
+  refresh: function () {
+    this._setStatus('Loading…');
+
+    var self = this;
+    var ga = new GlideAjax('IncidentsForUser');
+    ga.addParam('sysparm_name', 'getRecentIncidents');
+    ga.getXMLAnswer(function (answer) {
+      try {
+        var items = JSON.parse(answer || '[]');
+        self._renderRows(items);
+        self._setStatus('Loaded ' + items.length + ' record(s).');
+      } catch (e) {
+        self._renderRows([]);
+        self._setStatus('Error loading incidents.');
+      }
+    });
+  },
+
+  _setStatus: function (msg) {
+    var el = document.getElementById('inc_status');
+    if (el) el.textContent = msg;
+  },
+
+  _escapeHtml: function (str) {
+    return (str || '').toString()
+      .replace(/&amp;/g, '&amp;amp;')
+      .replace(/&lt;/g, '&amp;lt;')
+      .replace(/&gt;/g, '&amp;gt;')
+      .replace(/"/g, '&amp;quot;')
+      .replace(/'/g, '&amp;#39;');
+  },
+
+  _renderRows: function (items) {
+    var tbody = document.getElementById('inc_tbody');
+    if (!tbody) return;
+
+    tbody.innerHTML = '';
+
+    if (!items || items.length === 0) {
+      tbody.innerHTML =
+        '&lt;tr&gt;&lt;td colspan="4" style="padding:10px; color:#75787B;"&gt;No incidents found.&lt;/td&gt;&lt;/tr&gt;';
+      return;
+    }
+
+    var html = '';
+    for (var i = 0; i &lt; items.length; i++) {
+      var it = items[i];
+      html +=
+        '&lt;tr&gt;' +
+          '&lt;td style="padding:10px; border-bottom:1px solid #EEE;"&gt;' + this._escapeHtml(it.number) + '&lt;/td&gt;' +
+          '&lt;td style="padding:10px; border-bottom:1px solid #EEE;"&gt;' + this._escapeHtml(it.short_description) + '&lt;/td&gt;' +
+          '&lt;td style="padding:10px; border-bottom:1px solid #EEE;"&gt;' + this._escapeHtml(it.state) + '&lt;/td&gt;' +
+          '&lt;td style="padding:10px; border-bottom:1px solid #EEE;"&gt;' + this._escapeHtml(it.sys_updated_on) + '&lt;/td&gt;' +
+        '&lt;/tr&gt;';
+    }
+
+    tbody.innerHTML = html;
+  },
+
+  type: 'RecentIncidentsUI'
+};
+]]&gt;&lt;/script&gt;&lt;script_name&gt;recent_incidents_for_user.js&lt;/script_name&gt;&lt;sys_class_name&gt;sys_ui_script&lt;/sys_class_name&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2026-01-14 05:34:22&lt;/sys_created_on&gt;&lt;sys_id&gt;0f664cf7c31ab210c16f7f65e4013122&lt;/sys_id&gt;&lt;sys_mod_count&gt;0&lt;/sys_mod_count&gt;&lt;sys_name&gt;x_58872_needit.recent_incidents_for_user&lt;/sys_name&gt;&lt;sys_package display_value="NeedIt" source="x_58872_needit"&gt;6ead8e780f603200cd674f8ce1050ed1&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="NeedIt"&gt;6ead8e780f603200cd674f8ce1050ed1&lt;/sys_scope&gt;&lt;sys_update_name&gt;sys_ui_script_0f664cf7c31ab210c16f7f65e4013122&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2026-01-14 05:34:22&lt;/sys_updated_on&gt;&lt;ui_type&gt;10&lt;/ui_type&gt;&lt;use_scoped_format&gt;false&lt;/use_scoped_format&gt;&lt;/sys_ui_script&gt;&lt;/record_update&gt;</payload>
+        <payload_hash>-67777496</payload_hash>
+        <record_name>x_58872_needit.recent_incidents_for_user</record_name>
+        <reverted_from/>
+        <source>d5d9be41c35e3210c16f7f65e40131c7</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-01-14 05:34:22</sys_created_on>
+        <sys_id>f0f748bbc31ab210c16f7f65e4013190</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>19bbaff76500000001</sys_recorded_at>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-01-14 05:34:22</sys_updated_on>
+        <type>UI Script</type>
+        <update_guid>fcf748bb461ab210eaf06adab483958e</update_guid>
+        <update_guid_history>fcf748bb461ab210eaf06adab483958e:-67777496</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete/>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-01-14 05:57:15</sys_created_on>
+        <sys_db_object display_value="" name="sys_ui_script">sys_ui_script</sys_db_object>
+        <sys_id>b58870fac2be475f9d4b94c549544c69</sys_id>
+        <sys_metadata>0f664cf7c31ab210c16f7f65e4013122</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>x_58872_needit.recent_incidents_for_user</sys_name>
+        <sys_package display_value="NeedIt" source="x_58872_needit">6ead8e780f603200cd674f8ce1050ed1</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="NeedIt">6ead8e780f603200cd674f8ce1050ed1</sys_scope>
+        <sys_scope_delete display_value="">94872a8897db403e8ee69a431de2fca4</sys_scope_delete>
+        <sys_update_name>sys_ui_script_0f664cf7c31ab210c16f7f65e4013122</sys_update_name>
+        <sys_update_version display_value="sys_ui_script_0f664cf7c31ab210c16f7f65e4013122">f0f748bbc31ab210c16f7f65e4013190</sys_update_version>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-01-14 05:57:15</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>
