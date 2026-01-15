@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_ui_page">
+    <sys_ui_page action="INSERT_OR_UPDATE">
+        <category>general</category>
+        <client_script><![CDATA[(function () {
+  function esc(s) {
+    return (s == null ? "" : String(s))
+      .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;").replace(/'/g, "&#39;");
+  }
+
+  function setGreeting() {
+    var el = document.getElementById("ri_greeting");
+    if (!el) return;
+
+    var name = (typeof g_user !== "undefined" && g_user.getFullName) ? g_user.getFullName() : "";
+    el.textContent = name ? ("Hi " + name + ", here are your recent incidents.") : "Hi, here are your recent incidents.";
+  }
+
+  function setStatus(msg) {
+    var el = document.getElementById("ri_status");
+    if (el) el.textContent = msg;
+  }
+
+  function render(rows) {
+    var tbody = document.getElementById("ri_tbody");
+    if (!tbody) return;
+
+    tbody.innerHTML = "";
+
+    if (!rows || !rows.length) {
+      setStatus("No incidents found.");
+      return;
+    }
+
+    setStatus("Showing " + rows.length + " incidents.");
+    for (var i = 0; i < rows.length; i++) {
+      var r = rows[i] || {};
+      var tr = document.createElement("tr");
+      tr.innerHTML =
+        "<td>" + esc(r.number) + "</td>" +
+        "<td>" + esc(r.short_description) + "</td>" +
+        "<td>" + esc(r.state) + "</td>" +
+        "<td>" + esc(r.sys_updated_on) + "</td>";
+      tbody.appendChild(tr);
+    }
+  }
+
+  function load() {
+    setGreeting();
+    setStatus("Loading…");
+
+    var ga = new GlideAjax("IncidentsForUserWithout");
+    ga.addParam("sysparm_name", "getRecentIncidents");
+    ga.getXMLAnswer(function (answer) {
+      try {
+        var rows = JSON.parse(answer || "[]");
+        render(rows);
+      } catch (e) {
+        setStatus("Error: bad response from server.");
+        if (window.console) console.error("Bad response:", answer, e);
+      }
+    });
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", load);
+  } else {
+    load();
+  }
+})();
+]]></client_script>
+        <description/>
+        <direct>false</direct>
+        <endpoint>x_58872_needit_recent_incidents_without.do</endpoint>
+        <html><![CDATA[<style>
+  #ri_wrap { font-family: inherit; }
+  #ri_greeting { margin: 8px 0; font-weight: 600; }
+  #ri_status { margin: 8px 0; color: #444; }
+  #ri_table { width: 100%; border-collapse: collapse; }
+  #ri_table th, #ri_table td { border: 1px solid #ddd; padding: 8px; vertical-align: top; }
+  #ri_table th { background: #f7f7f7; }
+</style>
+
+<div id="ri_wrap">
+  <div id="ri_greeting"></div>
+  <div id="ri_status">Loading…</div>
+  <table id="ri_table" aria-label="Recent Incidents">
+    <thead>
+      <tr>
+        <th style="width:140px;">Number</th>
+        <th>Short description</th>
+        <th style="width:140px;">State</th>
+        <th style="width:180px;">Updated</th>
+      </tr>
+    </thead>
+    <tbody id="ri_tbody"></tbody>
+  </table>
+</div>]]></html>
+        <name>recent_incidents_without</name>
+        <processing_script/>
+        <sys_class_name>sys_ui_page</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-01-14 13:14:55</sys_created_on>
+        <sys_id>b2d0fdb3c356f210c16f7f65e40131ec</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>recent_incidents_without</sys_name>
+        <sys_package display_value="NeedIt" source="x_58872_needit">6ead8e780f603200cd674f8ce1050ed1</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="NeedIt">6ead8e780f603200cd674f8ce1050ed1</sys_scope>
+        <sys_update_name>sys_ui_page_b2d0fdb3c356f210c16f7f65e40131ec</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-01-14 13:14:55</sys_updated_on>
+    </sys_ui_page>
+    <sys_es_latest_script action="INSERT_OR_UPDATE">
+        <id>b2d0fdb3c356f210c16f7f65e40131ec</id>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-01-14 13:14:53</sys_created_on>
+        <sys_id>b6513d33c356f210c16f7f65e40131fd</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-01-14 13:14:53</sys_updated_on>
+        <table>sys_ui_page</table>
+        <use_es_latest>true</use_es_latest>
+    </sys_es_latest_script>
+</record_update>
