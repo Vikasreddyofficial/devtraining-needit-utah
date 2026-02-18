@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_ui_policy_action">
+    <sys_ui_policy_action action="DELETE">
+        <cleared>false</cleared>
+        <disabled>true</disabled>
+        <field>short_description</field>
+        <field_message/>
+        <field_message_type>none</field_message_type>
+        <mandatory>true</mandatory>
+        <sys_class_name>sys_ui_policy_action</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-02-16 12:03:47</sys_created_on>
+        <sys_id>b47d9b9ac38b3e10c16f7f65e4013180</sys_id>
+        <sys_mod_count>4</sys_mod_count>
+        <sys_name>short_description</sys_name>
+        <sys_package display_value="NeedIt" source="x_58872_needit">6ead8e780f603200cd674f8ce1050ed1</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="NeedIt">6ead8e780f603200cd674f8ce1050ed1</sys_scope>
+        <sys_update_name>sys_ui_policy_action_b47d9b9ac38b3e10c16f7f65e4013180</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-02-16 12:05:51</sys_updated_on>
+        <table>x_58872_needit_needit</table>
+        <ui_policy display_value="Testing negative consdition">2a2d539ac38b3e10c16f7f65e401313e</ui_policy>
+        <value/>
+        <value_action>ignore</value_action>
+        <visible>ignore</visible>
+    </sys_ui_policy_action>
+    <sys_translated_text action="DELETE" query="documentkey=b47d9b9ac38b3e10c16f7f65e4013180"/>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="NeedIt">6ead8e780f603200cd674f8ce1050ed1</application>
+        <file_path/>
+        <instance_id>b6e3a19eebb8ead0c040fddacad0cd33</instance_id>
+        <instance_name>dev324497</instance_name>
+        <name>sys_ui_policy_action_b47d9b9ac38b3e10c16f7f65e4013180</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_ui_policy_action"><sys_ui_policy_action action="INSERT_OR_UPDATE"><cleared>false</cleared><disabled>true</disabled><field>short_description</field><field_message/><field_message_type>none</field_message_type><mandatory>true</mandatory><sys_class_name>sys_ui_policy_action</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2026-02-16 12:03:47</sys_created_on><sys_id>b47d9b9ac38b3e10c16f7f65e4013180</sys_id><sys_mod_count>4</sys_mod_count><sys_name>short_description</sys_name><sys_package display_value="NeedIt" source="x_58872_needit">6ead8e780f603200cd674f8ce1050ed1</sys_package><sys_policy/><sys_scope display_value="NeedIt">6ead8e780f603200cd674f8ce1050ed1</sys_scope><sys_update_name>sys_ui_policy_action_b47d9b9ac38b3e10c16f7f65e4013180</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2026-02-16 12:05:51</sys_updated_on><table>x_58872_needit_needit</table><ui_policy display_value="Testing negative consdition">2a2d539ac38b3e10c16f7f65e401313e</ui_policy><value/><value_action>ignore</value_action><visible>ignore</visible></sys_ui_policy_action><sys_translated_text action="delete_multiple" query="documentkey=b47d9b9ac38b3e10c16f7f65e4013180"/></record_update>]]></payload>
+        <payload_hash>-1991816913</payload_hash>
+        <record_name>short_description</record_name>
+        <reverted_from/>
+        <source>199c13ddc362fe10c16f7f65e4013149</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-02-16 12:05:51</sys_created_on>
+        <sys_id>950edbdac38b3e10c16f7f65e4013198</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>19c6657ba870000001</sys_recorded_at>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-02-16 12:05:51</sys_updated_on>
+        <type>UI Policy Action</type>
+        <update_guid>150edbda8e8b3e102c559c1a7029cd97</update_guid>
+        <update_guid_history>150edbda8e8b3e102c559c1a7029cd97:-1991816913,3bed97dac98b3e10289fc436d8aadaae:2049988787,3eed9bdaec8b3e10feedae7d3427c5be:624956750,e3ad9b9a1a8b3e10f7558a7e6a12330b:-1991816913,cb8d1396968b3e1042f4e0517be7308b:1869671987</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete/>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-02-16 12:06:25</sys_created_on>
+        <sys_db_object display_value="" name="sys_ui_policy_action">sys_ui_policy_action</sys_db_object>
+        <sys_id>09340f71eb0840208e809a8d1f762590</sys_id>
+        <sys_metadata>b47d9b9ac38b3e10c16f7f65e4013180</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>short_description</sys_name>
+        <sys_package display_value="NeedIt" source="x_58872_needit">6ead8e780f603200cd674f8ce1050ed1</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="NeedIt">6ead8e780f603200cd674f8ce1050ed1</sys_scope>
+        <sys_scope_delete display_value="">94872a8897db403e8ee69a431de2fca4</sys_scope_delete>
+        <sys_update_name>sys_ui_policy_action_b47d9b9ac38b3e10c16f7f65e4013180</sys_update_name>
+        <sys_update_version display_value="sys_ui_policy_action_b47d9b9ac38b3e10c16f7f65e4013180">950edbdac38b3e10c16f7f65e4013198</sys_update_version>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-02-16 12:06:25</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>
